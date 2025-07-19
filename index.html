@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="max-w-screen">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +11,7 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
+    <link href="src/output.css" rel="stylesheet" />
 
     <title>Frontend Mentor | Interactive card details form</title>
 
@@ -25,29 +26,141 @@
       }
     </style>
   </head>
-  <body>
-    <main>
-      <section>
-        <img src="images/bg-card-back.png" />
-        <img src="images/bg-card-front.png" />
+  <body class="max-w-screen">
+    <main class="max-w-screen">
+      <section class="card-bg h-64 pt-10 relative text-white tracking-widest">
+        <div class="absolute left-16">
+          <img src="images/bg-card-back.png" alt="bg-card-back" class="card" />
+          <p class="absolute bottom-[46%] left-[80%] text-xs cvc">000</p>
+        </div>
+        <div class="absolute left-6 top-[8.5rem]">
+          <img
+            src="images/bg-card-front.png"
+            alt="bg-card-front"
+            class="card"
+          />
+          <div class="px-6">
+            <img
+              src="images/card-logo.svg"
+              alt="card-logo"
+              class="absolute bottom-[62%] w-[4.7rem]"
+            />
+            <p class="absolute bottom-[30%] text-xl card-num">
+              0000 0000 0000 0000
+            </p>
+            <p class="absolute bottom-[10%] text-xs user-name">
+              JANE APPLESEED
+            </p>
+            <p class="absolute bottom-[10%] left-[80%] text-xs date">
+              <span class="month">00</span>/<span class="year">00</span>
+            </p>
+          </div>
+        </div>
       </section>
 
-      <section><</section>
-    </main>
+      <section class="pt-24 px-7 grid grid-cols-1">
+        <form
+          class="flex flex-col items-center justify-center gap-8"
+          novalidate
+        >
+          <section class="">
+            <label for="cd-name" class="">CARDHOLDER NAME</label>
+            <input
+              type="text"
+              id="cd-name"
+              placeholder="e.g. Jane Appleseed"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s'-]/g, '');
+      const nameFormat = this.value.split(' ').map((word) => {
 
-    0000 0000 0000 0000 Jane Appleseed 00/00 000 Cardholder Name e.g. Jane
-    Appleseed Card Number e.g. 1234 5678 9123 0000 Exp. Date (MM/YY) MM YY CVC
-    e.g. 123 Confirm
+  return word[0].toUpperCase() + word.slice(1, word.length).toLowerCase();
+}).join(' ');
+
+this.value = nameFormat;
+              "
+              class="name-input"
+              required
+            />
+          </section>
+          <section>
+            <label for="cd-num">CARD NUMBER</label>
+            <input
+              type="text"
+              id="cd-num"
+              inputmode="numeric"
+              placeholder="e.g. 1234 5678 9123 0000"
+              oninput="this.value = this.value.replace(/[^0-9]/g , '');
+          const value = this.value.slice(0, 16);
+              if(String(value.length) > 3 ){
+                this.value = value.replace(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/,'$1 $2 $3 $4')
+              }
+              "
+              class="card-num-input"
+              required
+            />
+          </section>
+          <div class="flex gap-3">
+            <div class="flex-1">
+              <label class="">EXP. DATE (MM/YY)</label>
+              <div class="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="MM"
+                  class=""
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,2);
+                if(this.value <= 12 )
+                 {
+                  this.value = this.value
+                 }else{
+                  this.value = 0
+                 }
+                
+                "
+                  id="month-input"
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="YY"
+                  class=""
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,2)"
+                  required
+                  id="year-input"
+                />
+              </div>
+            </div>
+
+            <div class="flex-1">
+              <label for="cvc" class="">CVC</label>
+              <input
+                type="text"
+                id="cvc"
+                placeholder="e.g. 123"
+                class=""
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,3)"
+                required
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="bg-[hsl(278,68%,11%)] text-white py-3 w-full rounded-md text-lg btn-submit"
+          >
+            Confirm
+          </button>
+        </form>
+      </section>
+    </main>
 
     <!-- Completed state start -->
 
-    Thank you! We've added your card details Continue
+    <!-- Thank you! We've added your card details Continue -->
 
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
+      >. Coded by <a href="#">Suad</a>.
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

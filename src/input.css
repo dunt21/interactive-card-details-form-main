@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import "tailwindcss";
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.card-bg {
+  background-image: url("/images/bg-main-mobile.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.card {
+  width: 19rem;
+}
+
+label {
+  font-weight: 600;
+  color: hsl(278, 68%, 11%);
+}
+
+section > input[type="number"],
+section > input[type="text"],
+div > input {
+  margin-top: 8px;
+  border: 1px solid hsl(270, 3%, 87%);
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  color: black;
+  cursor: pointer;
+}
+
+section > input[type="number"]::placeholder,
+section > input[type="text"]::placeholder,
+div > input::placeholder {
+  color: hsl(212, 12%, 71%);
+}
+
+section > input[type="number"]:focus,
+section > input[type="text"]:focus,
+div > input:focus {
+  outline: none;
+  border: 2px solid hsl(278, 68%, 11%);
+}
