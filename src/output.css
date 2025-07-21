@@ -8,6 +8,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-400: oklch(70.4% 0.191 22.216);
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 0.75rem;
@@ -252,6 +253,17 @@
   .rounded-md {
     border-radius: var(--radius-md);
   }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-red-400 {
+    border-color: var(--color-red-400);
+  }
   .bg-\[hsl\(278\,68\%\,11\%\)\] {
     background-color: hsl(278,68%,11%);
   }
@@ -327,6 +339,11 @@ section > input[type="number"]:focus, section > input[type="text"]:focus, div > 
   outline: none;
   border: 2px solid hsl(278, 68%, 11%);
 }
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @property --tw-tracking {
   syntax: "*";
   inherits: false;
@@ -339,6 +356,7 @@ section > input[type="number"]:focus, section > input[type="text"]:focus, div > 
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-tracking: initial;
       --tw-outline-style: solid;
     }

@@ -24,19 +24,65 @@ updateCard(cvcInput, cvc);
 updateCard(monthInput, month);
 updateCard(yearInput, year);
 
-function displayError(input) {
+//to create an error msg
+function createErrMsg(input, msg) {
   const errMsg = document.createElement("p");
-  errMsg.textContent = "Can't be blank";
+  errMsg.textContent = msg;
   errMsg.style.color = "red";
   errMsg.style.fontSize = "0.7rem";
   errMsg.style.marginTop = "5px";
 
+  input.style.border = "1px solid red";
+  input.insertAdjacentElement("afterend", errMsg);
+}
+
+function displayError(input) {
+  const existErrMsg = input.nextElementSibling;
+  const isPresent = existErrMsg;
+
+  //for displaying empty inputs
   if (input.value === "") {
-    input.classList.add("border-2", "border-red-400");
-    input.insertAdjacentElement("afterend", errMsg);
+    if (!isPresent) {
+      createErrMsg(input, "Can't be blank");
+    }
   } else {
-    errMsg.classList.add("hidden");
+    input.style.border = "1px solid hsl(270, 3%, 87%)";
     input.classList.remove("border-2", "border-red-400");
+    if (isPresent) {
+      existErrMsg.remove();
+    }
+  }
+
+  //for checking name length
+  if (
+    input === nameInput &&
+    nameInput.value != "" &&
+    nameInput.value.trim().split(" ").length < 2
+  ) {
+    createErrMsg(nameInput, "Name must not be less than two");
+  }
+
+  //for checking card length
+  if (
+    input === cardNumInput &&
+    cardNumInput.value != "" &&
+    cardNumInput.value.replace(/\s+/g, "").length < 16
+  ) {
+    createErrMsg(cardNumInput, "Card number must be upto 16");
+  }
+
+  //for month and year value
+  if (input === monthInput && monthInput.value != "" && monthInput.value < 1) {
+    createErrMsg(monthInput, "Kindly enter a valid month");
+  }
+
+  if (input === yearInput && yearInput.value != "" && yearInput.value < 10) {
+    createErrMsg(yearInput, "Kindly enter a valid year");
+  }
+
+  //for cvc length
+  if (input === cvcInput && cvcInput.value != "" && cvcInput.value.length < 3) {
+    createErrMsg(cvcInput, "Cvc number must be upto 3");
   }
 }
 

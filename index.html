@@ -102,30 +102,34 @@ this.value = nameFormat;
             <div class="flex-1">
               <label class="">EXP. DATE (MM/YY)</label>
               <div class="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="MM"
-                  class=""
-                  oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,2);
+                <div>
+                  <input
+                    type="text"
+                    placeholder="MM"
+                    class=""
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,2);
                 if(this.value <= 12 )
                  {
                   this.value = this.value
                  }else{
-                  this.value = 0
+                  this.value = ''
                  }
                 
                 "
-                  id="month-input"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="YY"
-                  class=""
-                  oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,2)"
-                  required
-                  id="year-input"
-                />
+                    id="month-input"
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="YY"
+                    class=""
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,2)"
+                    required
+                    id="year-input"
+                  />
+                </div>
               </div>
             </div>
 
