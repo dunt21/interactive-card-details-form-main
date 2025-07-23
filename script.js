@@ -94,4 +94,7 @@ btnSubmit.addEventListener("click", (e) => {
   displayError(monthInput);
   displayError(yearInput);
   displayError(cardNumInput);
+
+  document.querySelector("form").classList.add("fade");
+  document.querySelector(".complete-state").classList.add("show");
 });

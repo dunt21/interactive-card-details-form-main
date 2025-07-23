@@ -15,7 +15,20 @@ body {
   width: 19rem;
 }
 
-label {
+@media (width >= 64rem) {
+  .card-bg {
+    background-image: url("/images/bg-main-desktop.png");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card {
+    width: 80%;
+  }
+}
+
+label,
+.tank-u {
   font-weight: 600;
   color: hsl(278, 68%, 11%);
 }
@@ -45,4 +58,33 @@ section > input[type="text"]:focus,
 div > input:focus {
   outline: none;
   border: 2px solid hsl(278, 68%, 11%);
+}
+
+/* bg-[hsl(278,68%,11%)] text-white py-3 w-full rounded-md text-lg */
+
+button {
+  background-color: hsl(278, 68%, 11%);
+  color: white;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.fade {
+  opacity: 0;
+  display: none;
+  transition: opacity 2s, display 1s allow-discrete;
+}
+
+.show {
+  opacity: 1;
+  display: flex;
+  transition: opacity 3s, display 2s;
+}
+
+@starting-style {
+  .show {
+    opacity: 0;
+  }
 }

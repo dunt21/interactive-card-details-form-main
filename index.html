@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="max-w-screen">
+<html lang="en" class="max-w-screen h-screen">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,14 +26,24 @@
       }
     </style>
   </head>
-  <body class="max-w-screen">
-    <main class="max-w-screen">
-      <section class="card-bg h-64 pt-10 relative text-white tracking-widest">
-        <div class="absolute left-16">
+  <body class="max-w-screen h-screen">
+    <main class="w-full h-full lg:flex lg:items-center relative">
+      <section
+        class="w-full card-bg h-64 pt-10 text-white tracking-widest lg:flex-2/5 lg:h-full"
+      >
+        <div
+          class="absolute left-16 sm:left-[55%] sm lg:left-[16%] lg:bottom-1/6"
+        >
           <img src="images/bg-card-back.png" alt="bg-card-back" class="card" />
-          <p class="absolute bottom-[46%] left-[80%] text-xs cvc">000</p>
+          <p
+            class="absolute bottom-[46%] left-[80%] lg:left-[65%] text-xs lg:text-sm cvc"
+          >
+            000
+          </p>
         </div>
-        <div class="absolute left-6 top-[8.5rem]">
+        <div
+          class="absolute left-6 top-[8.5rem] sm:left-[5%] sm:top-[3rem] lg:left-[10%] lg:top-1/4"
+        >
           <img
             src="images/bg-card-front.png"
             alt="bg-card-front"
@@ -43,24 +53,26 @@
             <img
               src="images/card-logo.svg"
               alt="card-logo"
-              class="absolute bottom-[62%] w-[4.7rem]"
+              class="absolute bottom-[62%] w-[4.7rem] lg:w-[5.5rem]"
             />
-            <p class="absolute bottom-[30%] text-xl card-num">
+            <p class="absolute bottom-[30%] text-xl lg:text-2xl card-num">
               0000 0000 0000 0000
             </p>
-            <p class="absolute bottom-[10%] text-xs user-name">
+            <p class="absolute bottom-[10%] text-xs lg:text-sm user-name">
               JANE APPLESEED
             </p>
-            <p class="absolute bottom-[10%] left-[80%] text-xs date">
+            <p
+              class="absolute bottom-[10%] left-[80%] lg:left-[65%] text-xs lg:text-sm date"
+            >
               <span class="month">00</span>/<span class="year">00</span>
             </p>
           </div>
         </div>
       </section>
 
-      <section class="pt-24 px-7 grid grid-cols-1">
+      <section class="pt-24 px-7 grid grid-cols-1 w-full place-items-center">
         <form
-          class="flex flex-col items-center justify-center gap-8"
+          class="flex flex-col items-center justify-center gap-8 sm:w-2/3 lg:w-2/5"
           novalidate
         >
           <section class="">
@@ -98,7 +110,7 @@ this.value = nameFormat;
               required
             />
           </section>
-          <div class="flex gap-3">
+          <div class="flex gap-3 items-center">
             <div class="flex-1">
               <label class="">EXP. DATE (MM/YY)</label>
               <div class="flex gap-2">
@@ -145,13 +157,16 @@ this.value = nameFormat;
               />
             </div>
           </div>
-          <button
-            type="submit"
-            class="bg-[hsl(278,68%,11%)] text-white py-3 w-full rounded-md text-lg btn-submit"
-          >
-            Confirm
-          </button>
+          <button type="submit" class="btn-submit">Confirm</button>
         </form>
+        <div class="flex-col justify-center items-center hidden complete-state">
+          <img src="images/icon-complete.svg" class="mb-10" />
+          <p class="tank-u text-3xl tracking-widest mb-3">THANK YOU !</p>
+          <p class="text-xl text-[hsl(212,12%,71%)] mb-10">
+            We've added your card details
+          </p>
+          <button>Download and view your virtual card</button>
+        </div>
       </section>
     </main>
 
@@ -159,12 +174,6 @@ this.value = nameFormat;
 
     <!-- Thank you! We've added your card details Continue -->
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Suad</a>.
-    </div>
     <script src="script.js"></script>
   </body>
 </html>
