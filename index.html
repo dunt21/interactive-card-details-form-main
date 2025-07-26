@@ -29,7 +29,7 @@
   <body class="max-w-screen h-screen">
     <main class="w-full h-full lg:flex lg:items-center relative">
       <section
-        class="w-full card-bg h-64 pt-10 text-white tracking-widest lg:flex-2/5 lg:h-full"
+        class="w-full card-bg h-64 pt-10 text-white tracking-widest lg:flex-2/5 lg:h-full card-section"
       >
         <div
           class="absolute left-16 sm:left-[55%] sm lg:left-[16%] lg:bottom-1/6"
@@ -159,21 +159,31 @@ this.value = nameFormat;
           </div>
           <button type="submit" class="btn-submit">Confirm</button>
         </form>
+        <!-- Completed state start -->
+
         <div class="flex-col justify-center items-center hidden complete-state">
           <img src="images/icon-complete.svg" class="mb-10" />
           <p class="tank-u text-3xl tracking-widest mb-3">THANK YOU !</p>
           <p class="text-xl text-[hsl(212,12%,71%)] mb-10">
             We've added your card details
           </p>
-          <button>Download and view your virtual card</button>
+          <button class="cursor-pointer download-btn">
+            Download and view your virtual card
+          </button>
         </div>
       </section>
     </main>
+    <!-- for downloading the cards -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+      integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
 
-    <!-- Completed state start -->
-
-    <!-- Thank you! We've added your card details Continue -->
-
+    <!-- link to javascript code -->
     <script src="script.js"></script>
   </body>
 </html>

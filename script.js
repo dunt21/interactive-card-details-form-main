@@ -12,6 +12,10 @@ const yearInput = document.getElementById("year-input");
 const monthInput = document.getElementById("month-input");
 const btnSubmit = document.querySelector(".btn-submit");
 
+//for the download
+const cardSection = document.querySelector(".card-section");
+const downloadBtn = document.querySelector(".download-btn");
+
 function updateCard(input, text) {
   input.addEventListener("input", (e) => {
     text.textContent = e.target.value;
@@ -36,9 +40,13 @@ function createErrMsg(input, msg) {
   input.insertAdjacentElement("afterend", errMsg);
 }
 
+let error;
+
 function displayError(input) {
   const existErrMsg = input.nextElementSibling;
   const isPresent = existErrMsg;
+
+  error = true;
 
   //for displaying empty inputs
   if (input.value === "") {
@@ -51,6 +59,7 @@ function displayError(input) {
     if (isPresent) {
       existErrMsg.remove();
     }
+    error = false;
   }
 
   //for checking name length
@@ -95,6 +104,18 @@ btnSubmit.addEventListener("click", (e) => {
   displayError(yearInput);
   displayError(cardNumInput);
 
+  if (error) {
+    return;
+  }
+
   document.querySelector("form").classList.add("fade");
   document.querySelector(".complete-state").classList.add("show");
+});
+
+downloadBtn.addEventListener("click", () => {
+  domtoimage.toBlob(cardSection).then(function (blob) {
+    window.saveAs(blob, "card-view");
+    console.log("worked");
+  });
+  console.log("went through");
 });
