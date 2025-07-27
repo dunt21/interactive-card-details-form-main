@@ -114,9 +114,11 @@ const downloadBtn = document.querySelector(".download-btn");
 downloadBtn.addEventListener("click", () => {
   const cardSectionClone = document.querySelector(".card-section");
 
+  //defining design view for more styling after clicking download
   const mobileView = window.matchMedia("(max-width: 640px )");
   const desktopView = window.matchMedia("(min-width: 1024px)");
 
+  //.match means if the screen size matches what we defined the code below must work
   if (mobileView.matches) {
     cardSectionClone.classList.remove("h-64");
 
