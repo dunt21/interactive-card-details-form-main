@@ -12,10 +12,6 @@ const yearInput = document.getElementById("year-input");
 const monthInput = document.getElementById("month-input");
 const btnSubmit = document.querySelector(".btn-submit");
 
-//for the download
-const cardSection = document.querySelector(".card-section");
-const downloadBtn = document.querySelector(".download-btn");
-
 function updateCard(input, text) {
   input.addEventListener("input", (e) => {
     text.textContent = e.target.value;
@@ -112,10 +108,31 @@ btnSubmit.addEventListener("click", (e) => {
   document.querySelector(".complete-state").classList.add("show");
 });
 
+//for the download
+const downloadBtn = document.querySelector(".download-btn");
+
 downloadBtn.addEventListener("click", () => {
-  domtoimage.toBlob(cardSection).then(function (blob) {
+  const cardSectionClone = document.querySelector(".card-section");
+
+  const mobileView = window.matchMedia("(max-width: 640px )");
+  const desktopView = window.matchMedia("(min-width: 1024px)");
+
+  if (mobileView.matches) {
+    cardSectionClone.classList.remove("h-64");
+
+    cardSectionClone.classList.add("h-[50%]");
+  }
+
+  if (desktopView.matches) {
+    cardSectionClone.classList.remove("lg:flex-2/5");
+    cardSectionClone.classList.add("lg:flex-[100%]");
+    console.log("went through desktop");
+    console.log(cardSectionClone.getAttribute("class"));
+  }
+
+  domtoimage.toBlob(cardSectionClone).then(function (blob) {
     window.saveAs(blob, "card-view");
-    console.log("worked");
+
+    // console.log(wrapper);
   });
-  console.log("went through");
 });
