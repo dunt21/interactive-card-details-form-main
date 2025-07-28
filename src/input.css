@@ -12,7 +12,7 @@ body {
 }
 
 .card {
-  width: 19rem;
+  width: 18rem;
 }
 
 @media (width >= 64rem) {

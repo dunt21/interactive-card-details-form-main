@@ -36,17 +36,16 @@ function createErrMsg(input, msg) {
   input.insertAdjacentElement("afterend", errMsg);
 }
 
-let error;
-
 function displayError(input) {
   const existErrMsg = input.nextElementSibling;
   const isPresent = existErrMsg;
 
-  error = true;
+  let error = false;
 
   //for displaying empty inputs
   if (input.value === "") {
     if (!isPresent) {
+      error = true;
       createErrMsg(input, "Can't be blank");
     }
   } else {
@@ -64,6 +63,10 @@ function displayError(input) {
     nameInput.value != "" &&
     nameInput.value.trim().split(" ").length < 2
   ) {
+    error = true;
+
+    console.log("card name", error);
+
     createErrMsg(nameInput, "Name must not be less than two");
   }
 
@@ -73,37 +76,63 @@ function displayError(input) {
     cardNumInput.value != "" &&
     cardNumInput.value.replace(/\s+/g, "").length < 16
   ) {
+    error = true;
+
+    console.log("card num", error);
     createErrMsg(cardNumInput, "Card number must be upto 16");
   }
 
   //for month and year value
   if (input === monthInput && monthInput.value != "" && monthInput.value < 1) {
+    error = true;
+
+    console.log("card month", error);
+
     createErrMsg(monthInput, "Kindly enter a valid month");
   }
 
   if (input === yearInput && yearInput.value != "" && yearInput.value < 10) {
+    error = true;
+
+    console.log("card year", error);
+
     createErrMsg(yearInput, "Kindly enter a valid year");
   }
 
   //for cvc length
   if (input === cvcInput && cvcInput.value != "" && cvcInput.value.length < 3) {
+    error = true;
+
+    console.log("card cvc", error);
+
     createErrMsg(cvcInput, "Cvc number must be upto 3");
   }
+
+  return error;
 }
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
 
-  displayError(nameInput);
-  displayError(cvcInput);
-  displayError(monthInput);
-  displayError(yearInput);
-  displayError(cardNumInput);
+  const cardNumHasError = displayError(cardNumInput);
+  const nameHasError = displayError(nameInput);
+  const cvcHasError = displayError(cvcInput);
+  const monthHasError = displayError(monthInput);
+  const yearHasError = displayError(yearInput);
 
-  if (error) {
+  const hasError =
+    cardNumHasError ||
+    nameHasError ||
+    cvcHasError ||
+    monthHasError ||
+    yearHasError;
+
+  if (hasError) {
+    console.log(hasError);
     return;
   }
 
+  console.log(hasError);
   document.querySelector("form").classList.add("fade");
   document.querySelector(".complete-state").classList.add("show");
 });
